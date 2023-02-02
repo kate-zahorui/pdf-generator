@@ -1,4 +1,4 @@
-import { ContentContainer, Form } from "./";
+import { ContentContainer, Form, PdfContainer, PdfDocument } from "./";
 import * as api from "../services/api";
 import { useState } from "react";
 
@@ -34,13 +34,17 @@ function App() {
     }
   }
 
-  const showQRCode = !isLoading && image;
+  const showPDF = !isLoading && image;
   return (
     <ContentContainer>
       <Form onSubmit={handleGeneratePDF} />
       {error && <div>Error: {error}</div>}
       {isLoading && <div>Loading...</div>}
-      {showQRCode && <img src={image} alt="qrcode" width={100} height={100} />}
+      {showPDF && (
+        <PdfContainer>
+          <PdfDocument image={image} />
+        </PdfContainer>
+      )}
     </ContentContainer>
   );
 }

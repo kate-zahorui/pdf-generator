@@ -6,8 +6,10 @@ import { styled } from "@mui/material/styles";
 import { Btn } from "../";
 
 const StyledForm = styled(Box)(() => ({
-  maxWidth: "100%",
-  margin: "auto",
+  flexShrink: 0,
+  width: "100%",
+  marginLeft: "auto",
+  marginRight: "auto",
   marginBottom: "40px",
   display: "flex",
   flexDirection: "column",
