@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import { Box, InputLabel, OutlinedInput } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -7,6 +8,7 @@ import { Btn } from "../";
 const StyledForm = styled(Box)(() => ({
   maxWidth: "100%",
   margin: "auto",
+  marginBottom: "40px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -15,7 +17,7 @@ const StyledForm = styled(Box)(() => ({
   },
 }));
 
-const Form = () => {
+const Form = ({ onSubmit }) => {
   const [input, setInput] = useState("");
   const inputId = nanoid();
 
@@ -23,8 +25,15 @@ const Form = () => {
     setInput(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onSubmit(input);
+    setInput("");
+  };
+
   return (
-    <StyledForm component="form" action="">
+    <StyledForm component="form" action="" onSubmit={handleSubmit}>
       <InputLabel htmlFor={inputId} sx={{ marginBottom: 2 }}>
         Enter a string to generate the QR-code
       </InputLabel>
@@ -43,6 +52,10 @@ const Form = () => {
       <Btn text="Generate" />
     </StyledForm>
   );
+};
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;
