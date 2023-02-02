@@ -6,7 +6,6 @@ const StyledContainer = styled(Container)(() => ({
   maxWidth: "480px",
   padding: "40px 15px",
   minHeight: "100vh",
-  backgroundColor: "#7aa98a",
   display: "flex",
   flexDirection: "column",
   textAlign: "center",
