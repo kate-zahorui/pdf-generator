@@ -1,4 +1,4 @@
-import { ContentContainer, Form, PdfContainer, PdfDocument } from "./";
+import { ContentContainer, Form, Loader, PdfContainer, PdfDocument } from "./";
 import * as api from "../services/api";
 import { useState } from "react";
 
@@ -39,7 +39,7 @@ function App() {
     <ContentContainer>
       <Form onSubmit={handleGeneratePDF} />
       {error && <div>Error: {error}</div>}
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loader />}
       {showPDF && (
         <PdfContainer>
           <PdfDocument image={image} />
